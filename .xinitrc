@@ -30,7 +30,6 @@ if [ -f "$usermodmap" ]; then
 fi
 
 # start some nice programs
-
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
     for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
         [ -x "$f" ] && . "$f"
@@ -38,7 +37,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
     unset f
 fi
 
-# picom -CGb &
 xcompmgr -C -f -F &
 nm-applet &
 xfce4-session &
@@ -47,7 +45,7 @@ xfce4-power-manager &
 # xss-lock slock &
 flameshot &
 # dbus-daemon &
-emacs --deamon &
+# emacs --deamon &
 
-# exec awesome
-exec awesome > ~/.xsession.log 2>&1
+exec awesome
+# exec awesome > ~/.xsession.log 2>&1
