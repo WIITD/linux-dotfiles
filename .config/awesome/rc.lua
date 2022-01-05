@@ -66,13 +66,13 @@ end
 -- {{{ Variable definitions
 -- This is used later as the default terminal and editor to run.
 terminal          = "alacritty"
-editor            = "emacsclient -c -a ''"
+editor            = "emacsclient -nw -c -a 'emacs'"
 editor_cmd        = terminal.." -e " .. editor
-editor_gui        = "emacsclient -c -a ''"
+editor_gui        = "emacsclient -c -a 'emacs'"
 cmd_file_manager  = terminal.." -e mc -u"
 gui_file_manager  = "thunar"
 web_browser       = "firefox"
-package_manager   = "pamac-manager"
+package_manager   = "/usr/bin/octopi"
 print_scr         = "flameshot gui"
 
 -- Default modkey.
@@ -468,7 +468,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "I", "II", "III", "IV", "V" }, s, awful.layout.layouts[1])
+    awful.tag({"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"}, s, awful.layout.layouts[1])
     
     
     
@@ -803,6 +803,10 @@ globalkeys = gears.table.join(
     awful.key({modkey,           },       "e", function () awful.spawn(editor_gui) end,
               {description = "open a gui editor", group = "apps"}),
 
+    -- cmd code editor
+    awful.key({modkey,         Alt},       "e", function () awful.spawn(editor_cmd) end,
+              {description = "open a gui editor", group = "apps"}),
+
     -- package manager
     awful.key({ modkey,        Alt},      "m", function () awful.spawn(package_manager) end,
               {description = "open package manager", group = "apps"}),
@@ -1034,11 +1038,11 @@ client.connect_signal("request::titlebars", function(c)
             awful.mouse.client.resize(c)
         end)
     )
-
+    --
     awful.titlebar(c) : setup {
         { -- Left
             -- awful.titlebar.widget.iconwidget(c),
-            wibox.widget.textbox(" window: "),
+            wibox.widget.textbox(" "),
             buttons = buttons,
             layout  = wibox.layout.fixed.horizontal
         },
@@ -1052,7 +1056,7 @@ client.connect_signal("request::titlebars", function(c)
         },
         layout = wibox.layout.align.horizontal
     }
-end)  
+end)
 
 
 
@@ -1064,16 +1068,5 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
-
--- Rounded boarder
---client.connect_signal("manage", function (c)
---    if not c.maximized then
---        c.shape = gears.shape.rounded_rect
---    end
---end)
-
--- client.connect_signal("property::maximized", function (c)
---     c.shape = gears.shape.rectangle
--- end)
 -- }}}
 
