@@ -51,8 +51,12 @@
 
 
 (package! v-mode)
-(package! basic-mode)
+(package! haxe-mode)
 
-(package! fb-mode
-  :recipe (:host github :repo "rversteegen/fb-mode"
-            :files ("fb-mode.el")))
+(package! freebasic-mode
+  :recipe (:host github :repo "z80lives/freebasic-mode"
+            :files ("freebasic-mode.el")))
+
+(package! pico8-mode
+  :recipe (:host github :repo "Kaali/pico8-mode"
+            :files ("pico8-mode.el")))

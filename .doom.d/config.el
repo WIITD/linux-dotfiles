@@ -54,5 +54,5 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(set-frame-parameter (selected-frame) 'alpha '(95))
-(add-to-list 'default-frame-alist '(alpha . (95)))
+;; (set-frame-parameter (selected-frame) 'alpha '(95))
+;; (add-to-list 'default-frame-alist '(alpha . (95)))
